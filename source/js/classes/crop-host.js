@@ -75,6 +75,13 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
             imageRatio=image.width/image.height,
             canvasDims=imageDims;
 
+        var parent = elCanvas.parent().parent()[0];
+
+        maxCanvasDims[0] = parent.offsetWidth;
+        maxCanvasDims[1] = parent.offsetHeight;
+        minCanvasDims[0] = parent.offsetWidth;
+        minCanvasDims[1] = parent.offsetHeight;
+
         if(canvasDims[0]>maxCanvasDims[0]) {
           canvasDims[0]=maxCanvasDims[0];
           canvasDims[1]=canvasDims[0]/imageRatio;
@@ -89,7 +96,8 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
           canvasDims[1]=minCanvasDims[1];
           canvasDims[0]=canvasDims[1]*imageRatio;
         }
-        elCanvas.prop('width',canvasDims[0]).prop('height',canvasDims[1]).css({'margin-left': -canvasDims[0]/2+'px', 'margin-top': -canvasDims[1]/2+'px'});
+
+        elCanvas.prop('width',canvasDims[0]).prop('height',canvasDims[1]);
 
         theArea.setX(ctx.canvas.width/2);
         theArea.setY(ctx.canvas.height/2);
