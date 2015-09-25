@@ -1450,12 +1450,6 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         minCanvasDims[0] = parent.offsetWidth;
         minCanvasDims[1] = parent.offsetHeight;
 
-        console.log(elCanvas.parent().parent());
-
-            console.log('imageDims', imageDims);
-            console.log('imageRatio', imageRatio);
-            console.log('maxCanvasDims', maxCanvasDims);
-
         if(canvasDims[0]>maxCanvasDims[0]) {
           canvasDims[0]=maxCanvasDims[0];
           canvasDims[1]=canvasDims[0]/imageRatio;
@@ -1470,7 +1464,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
           canvasDims[1]=minCanvasDims[1];
           canvasDims[0]=canvasDims[1]*imageRatio;
         }
-                    console.log('canvasDims', canvasDims);
+        
         elCanvas.prop('width',canvasDims[0]).prop('height',canvasDims[1]);
 
         theArea.setX(ctx.canvas.width/2);
